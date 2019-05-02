@@ -2,8 +2,7 @@ package no.greenall.bintraydescriptiongenerator.exceptions
 
 class InvalidFilePathDefinitionsExceptionTest extends GroovyTestCase {
 
-
-    public static final String EXPECTED_MESSAGE = "FilePathDefinitions are not set"
+    public static final String EXPECTED_MESSAGE = "The file path definitions were empty"
 
     void testInvalidFilePathDefinitionsExceptionCanBeThrowWithMessage() {
 

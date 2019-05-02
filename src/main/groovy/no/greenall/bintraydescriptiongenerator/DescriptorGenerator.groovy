@@ -4,6 +4,7 @@ import groovy.json.JsonGenerator
 import groovy.json.JsonOutput
 import groovy.transform.builder.Builder
 import groovy.transform.builder.SimpleStrategy
+import no.greenall.bintraydescriptiongenerator.exceptions.InvalidFilePathDefinitionException
 import no.greenall.bintraydescriptiongenerator.exceptions.InvalidFilePathDefinitionsException
 import no.greenall.bintraydescriptiongenerator.exceptions.InvalidPackageException
 import no.greenall.bintraydescriptiongenerator.exceptions.InvalidVersionException
@@ -30,6 +31,12 @@ class DescriptorGenerator {
 
         if (!this.filePathDefinitions) {
             throw new InvalidFilePathDefinitionsException()
+        }
+
+        filePathDefinitions.each {
+            if (!it.isValid()) {
+                throw new InvalidFilePathDefinitionException(it.reportValidationErrors())
+            }
         }
 
         def jsonGenerator = new JsonGenerator.Options()

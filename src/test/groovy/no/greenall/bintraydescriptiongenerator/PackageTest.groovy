@@ -23,7 +23,7 @@ class PackageTest extends GroovyTestCase {
                 .withRepo(SOME_REPO)
                 .withSubject(SOME_SUBJECT)
         boolean shouldBeTrue = pkg.isValid()
-        assert true == shouldBeTrue
+        assert shouldBeTrue
     }
 
     void testPackageIsValidIsFalse() {
@@ -34,24 +34,26 @@ class PackageTest extends GroovyTestCase {
         }
     }
 
-    Package generateInvalidPackage(int random) {
+    static Package generateInvalidPackage(int random) {
         Package pkg = new Package()
 
         switch (random) {
             case 1: pkg.withName(" ")
-                       .withRepo("ok")
-                       .withSubject("ok")
-                    break
+                    .withRepo("ok")
+                    .withSubject("ok")
+                break
             case 2: pkg.withName("ok")
                     .withRepo(" ")
                     .withSubject("ok")
-                    break
-            case 2:
-            default:
-                    pkg.withName("ok")
+                break
+            case 3: pkg.withName("ok")
                     .withRepo("ok")
                     .withSubject(" ")
-                    break
+                break
+            default: pkg.withName("ok")
+                    .withRepo("ok")
+                    .withSubject(" ")
+                break
         }
 
 

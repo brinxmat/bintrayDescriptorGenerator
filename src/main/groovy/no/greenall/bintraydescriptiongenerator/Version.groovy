@@ -13,8 +13,7 @@ class Version {
     String reportValidationErrors() {
         if (!isValid()) {
 
-            String reportString = "In order to be valid, Bintray requires that the package object contains "
-            + "a name field and this was lacking"
+            String reportString = "In order to be valid, Bintray requires that the version object contains a name field and this was lacking"
 
             return reportString
         }
