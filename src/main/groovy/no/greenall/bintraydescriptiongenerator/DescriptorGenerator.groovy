@@ -11,6 +11,9 @@ import no.greenall.bintraydescriptiongenerator.exceptions.InvalidVersionExceptio
 
 @Builder(builderStrategy = SimpleStrategy, prefix = 'with', excludes = 'aPackage')
 class DescriptorGenerator {
+    public static final String DATE_FORMAT = 'yyyy-MM-dd'
+    public static final String CONTENT_HASH = 'contentHash'
+    public static final String ORIGINAL_CLASS_NAME = 'originalClassName'
     Version version
     Package aPackage
     FilePathDefinition[] filePathDefinitions
@@ -41,8 +44,8 @@ class DescriptorGenerator {
 
         def jsonGenerator = new JsonGenerator.Options()
                 .excludeNulls()
-                .dateFormat('yyyy-MM-dd')
-                .excludeFieldsByName(['contentHash', 'originalClassName']).build()
+                .dateFormat(DATE_FORMAT)
+                .excludeFieldsByName([CONTENT_HASH, ORIGINAL_CLASS_NAME]).build()
         def packageObject = ['package': aPackage, 'version': version, 'files': filePathDefinitions]
         return JsonOutput.prettyPrint(jsonGenerator.toJson(packageObject))
     }

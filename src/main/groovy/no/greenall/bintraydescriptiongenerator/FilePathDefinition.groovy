@@ -7,6 +7,8 @@ import groovy.transform.builder.SimpleStrategy
 class FilePathDefinition {
     private static final String INCLUDE_PATTERN = "includePattern"
     private static final String UPLOAD_PATTERN = "uploadPattern"
+    public static final String SEPARATOR = ", "
+    public static final String ERROR_PREFIX = "One or more filepath definition lacked"
 
     String includePattern
     String uploadPattern
@@ -28,6 +30,6 @@ class FilePathDefinition {
             report << UPLOAD_PATTERN
         }
 
-        return "One or more filepath definition lacked ${report.join(", ")}"
+        return "${ERROR_PREFIX} ${report.join(SEPARATOR)}"
     }
 }

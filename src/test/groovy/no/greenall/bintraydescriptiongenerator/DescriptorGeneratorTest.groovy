@@ -15,6 +15,9 @@ class DescriptorGeneratorTest extends GroovyTestCase {
     public static final String A_PACKAGE_REPO = "a-package-repo"
     public static final String SUBJECT = "subject"
     public static final String PATH_TO_EXPECTED_BINTRAY_JSON = "/bintray-descriptor.json"
+    public static final String SOME_VERSION_NAME = "1.0.0"
+    public static final String UPLOAD_PATTERN = "uploadPattern"
+    public static final String INCLUDE_PATTERN = "includePattern"
 
     void testDescriptorGeneratorHappyDayScenario() {
 
@@ -105,7 +108,7 @@ class DescriptorGeneratorTest extends GroovyTestCase {
     }
 
     static Version createGoodVersion() {
-        return new Version().withName("1.0.0")
+        return new Version().withName(SOME_VERSION_NAME)
     }
 
 
@@ -136,9 +139,9 @@ class DescriptorGeneratorTest extends GroovyTestCase {
         FilePathDefinition filePathDefinition = new FilePathDefinition()
 
         switch (missingField) {
-            case "uploadPattern": filePathDefinition.withUploadPattern(SOME_UPLOAD_PATTERN)
+            case UPLOAD_PATTERN: filePathDefinition.withUploadPattern(SOME_UPLOAD_PATTERN)
                 break
-            case "includePattern": filePathDefinition.withIncludePattern(SOME_INCLUDE_PATTERN)
+            case INCLUDE_PATTERN: filePathDefinition.withIncludePattern(SOME_INCLUDE_PATTERN)
                 break
             case ALL:
                 break

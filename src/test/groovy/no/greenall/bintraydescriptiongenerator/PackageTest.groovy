@@ -5,6 +5,8 @@ class PackageTest extends GroovyTestCase {
     public static final String SOME_NAME = "some name"
     public static final String SOME_REPO = "some-repo"
     public static final String SOME_SUBJECT = "some subject"
+    public static final String OK = "ok"
+    public static final String SINGLE_SPACE = " "
 
     void testPackageFluentInterface() {
         Package pkg = new Package()
@@ -38,21 +40,22 @@ class PackageTest extends GroovyTestCase {
         Package pkg = new Package()
 
         switch (random) {
-            case 1: pkg.withName(" ")
-                    .withRepo("ok")
-                    .withSubject("ok")
+            case 1: pkg.withName(SINGLE_SPACE)
+                    .withRepo(OK)
+                    .withSubject(OK)
+
                 break
-            case 2: pkg.withName("ok")
-                    .withRepo(" ")
-                    .withSubject("ok")
+            case 2: pkg.withName(OK)
+                    .withRepo(SINGLE_SPACE)
+                    .withSubject(OK)
                 break
-            case 3: pkg.withName("ok")
-                    .withRepo("ok")
-                    .withSubject(" ")
+            case 3: pkg.withName(OK)
+                    .withRepo(OK)
+                    .withSubject(SINGLE_SPACE)
                 break
-            default: pkg.withName("ok")
-                    .withRepo("ok")
-                    .withSubject(" ")
+            default: pkg.withName(OK)
+                    .withRepo(OK)
+                    .withSubject(SINGLE_SPACE)
                 break
         }
 
