@@ -1,0 +1,22 @@
+{
+    "package": {
+        "repo": "b",
+        "valid": true,
+        "subjectValid": true,
+        "nameValid": true,
+        "repoValid": true,
+        "subject": "a",
+        "name": "c"
+    },
+    "version": {
+        "valid": true,
+        "name": "in-deed"
+    },
+    "files": [
+        {
+            "valid": true,
+            "uploadPattern": "something",
+            "includePattern": "something/else"
+        }
+    ]
+}
